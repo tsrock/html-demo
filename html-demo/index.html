@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Demostración HTML del flujo cotización y emisión APS — no es un sitio oficial." />
+    <title>IBSOFT-157 · Demo HTML</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegación de demostración">
+        <div class="sidebar-title">Vistas de la demo (1–9)</div>
+        <ol class="nav-steps">
+          <li>
+            <button type="button" data-screen="0" aria-current="page">
+              <span class="nav-num">1</span>
+              <span><strong>Producto</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Solicitud de producto</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="1">
+              <span class="nav-num">2</span>
+              <span><strong>Cotización · Datos</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Datos del contratante</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="2">
+              <span class="nav-num">3</span>
+              <span><strong>Cotización · Resumen</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Planes y contratante</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="3">
+              <span class="nav-num">4</span>
+              <span><strong>Cotización guardada</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Confirmación</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="4">
+              <span class="nav-num">5</span>
+              <span><strong>Emisión · Declaración</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Declaración jurada</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="5">
+              <span class="nav-num">6</span>
+              <span><strong>Emisión · Beneficiarios</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Datos del beneficiario</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="6">
+              <span class="nav-num">7</span>
+              <span><strong>Emisión · Resumen</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Resumen de emisión</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="7">
+              <span class="nav-num">8</span>
+              <span><strong>Grupo familiar</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Asegurados adicionales</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-screen="8">
+              <span class="nav-num">9</span>
+              <span><strong>Póliza emitida</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400">Constancia y coberturas</span></span>
+            </button>
+          </li>
+        </ol>
+      </aside>
+
+      <div class="app-main-wrap">
+        <div class="disclaimer" role="note">
+          <strong>Demostración:</strong> interfaz de muestra basada en secuencias 1–9. No es un sitio oficial ni procesa datos reales.
+        </div>
+        <div class="mobile-nav">
+          <label for="screen-jump" class="sr-only">Ir a pantalla</label>
+          <select id="screen-jump" aria-label="Seleccionar pantalla de la demo">
+            <option value="0">1. Solicitud de producto</option>
+            <option value="1">2. Cotización — datos del contratante</option>
+            <option value="2">3. Cotización — resumen</option>
+            <option value="3">4. Cotización guardada</option>
+            <option value="4">5. Emisión — declaración jurada</option>
+            <option value="5">6. Emisión — beneficiarios</option>
+            <option value="6">7. Emisión — resumen</option>
+            <option value="7">8. Grupo familiar</option>
+            <option value="8">9. Póliza emitida</option>
+          </select>
+        </div>
+
+        <main class="app-main" id="main">
+          <!-- 1 -->
+          <section id="screen-0" class="screen">
+            <header class="header">
+              <div class="header-text">
+                <h1>Solicitud de producto</h1>
+                <p>Seleccione el producto que desea cotizar junto con el plan de su conveniencia.</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="card product-option" id="card-aps">
+              <div class="product-head">
+                <input type="radio" name="prod" id="prod-aps" value="aps" aria-labelledby="label-aps" />
+                <span class="product-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3 4 7v4c0 5 3.5 9 8 9s8-4 8-9V7l-8-4Z" />
+                    <path d="M8 11h8" />
+                    <path d="M9 15h6" />
+                  </svg>
+                </span>
+                <div>
+                  <strong id="label-aps">Accidentes Personales</strong>
+                  <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--text-muted)">
+                    Cobertura ante accidentes que puedan ocasionar lesiones, invalidez o fallecimiento.
+                  </p>
+                  <div id="aps-plans" class="aps-plans" hidden>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
+                      <input type="checkbox" /> Plan Básico — $50.000
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
+                      <input type="checkbox" /> Plan Intermedio — $150.000
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
+                      <input type="checkbox" /> Plan Premium — $300.000
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card product-option" id="card-funeral">
+              <div class="product-head">
+                <input type="radio" name="prod" id="prod-funeral" value="funeral" aria-labelledby="label-funeral" />
+                <span class="product-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 4v16" />
+                    <path d="M7 10h10" />
+                  </svg>
+                </span>
+                <div>
+                  <strong id="label-funeral">Gastos Funerarios</strong>
+                  <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--text-muted)">
+                    Apoyo para gastos funerarios y tranquilidad familiar.
+                  </p>
+                  <div id="funeral-plans" class="aps-plans" hidden>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
+                      <input type="checkbox" /> Plan Básico — Suma asegurada $30.000
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
+                      <input type="checkbox" /> Plan Intermedio — Suma asegurada $60.000
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
+                      <input type="checkbox" /> Plan Premium — Suma asegurada $120.000
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-actions footer-actions--end">
+              <button type="button" class="btn btn-primary" data-action="next">Siguiente: contratante →</button>
+            </div>
+          </section>
+
+          <!-- 2 -->
+          <section id="screen-1" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Cotización Accidentes Personales</h1>
+                <p>Paso 1: Datos de Contratante</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="stepper-wrap">
+              <nav class="stepper" aria-label="Progreso del trámite">
+                <div class="stepper-item stepper-item--active">
+                  <div class="stepper-circle" aria-current="step">1</div>
+                  <span class="stepper-label">Datos de Contratante</span>
+                </div>
+                <div class="stepper-item stepper-item--pending">
+                  <span class="stepper-connector stepper-connector--todo" aria-hidden="true"></span>
+                  <div class="stepper-circle">2</div>
+                  <span class="stepper-label">Resumen</span>
+                </div>
+              </nav>
+            </div>
+            <div class="card">
+              <h2 style="margin: 0 0 1rem; font-size: 1.1rem">Datos del Contratante</h2>
+              <div class="form-grid">
+                <div class="field" style="grid-column: 1 / -1">
+                  <label for="doc">Cédula de Identidad</label>
+                  <div class="field-row-2">
+                    <select id="doc-pref" aria-label="Tipo de documento">
+                      <option selected>V</option>
+                      <option>E</option>
+                      <option>J</option>
+                      <option>G</option>
+                    </select>
+                    <input id="doc" type="text" value="11827512" autocomplete="off" />
+                  </div>
+                </div>
+                <div class="field"><label for="nombre">Nombre</label><input id="nombre" type="text" value="CESAR" /></div>
+                <div class="field"><label for="apellido">Apellido</label><input id="apellido" type="text" value="RODRIGUEZ" /></div>
+                <div class="field"><label for="fnac">Fecha de nacimiento</label><input id="fnac" type="date" value="1985-03-22" /></div>
+                <div class="field">
+                  <label for="sexo">Sexo</label>
+                  <select id="sexo">
+                    <option value="M" selected>Masculino</option>
+                    <option value="F">Femenino</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="ecivil">Estado civil</label>
+                  <select id="ecivil">
+                    <option value="soltero">Soltero(a)</option>
+                    <option value="casado" selected>Casado(a)</option>
+                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="viudo">Viudo(a)</option>
+                    <option value="union">Unión estable</option>
+                  </select>
+                </div>
+                <div class="field"><label for="email">Correo electrónico</label><input id="email" type="email" value="CUCHIVANO@GMAIL.COM" /></div>
+                <div class="field">
+                  <label for="tlf">Teléfono</label>
+                  <div class="field-row-2">
+                    <select id="tlf-pref" aria-label="Código de área">
+                      <option selected>0412</option>
+                      <option>0414</option>
+                      <option>0424</option>
+                      <option>0416</option>
+                    </select>
+                    <input id="tlf" type="text" value="3354353" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-actions">
+              <button type="button" class="btn btn-primary" data-action="home">Inicio</button>
+              <button type="button" class="btn btn-primary" data-action="next">Continuar</button>
+            </div>
+          </section>
+
+          <!-- 3 -->
+          <section id="screen-2" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Cotización Accidentes Personales</h1>
+                <p>Paso 2: Resumen</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="stepper-wrap">
+              <nav class="stepper" aria-label="Progreso del trámite">
+                <div class="stepper-item stepper-item--pending">
+                  <div class="stepper-circle">1</div>
+                  <span class="stepper-label">Datos de Contratante</span>
+                </div>
+                <div class="stepper-item stepper-item--active">
+                  <span class="stepper-connector stepper-connector--todo" aria-hidden="true"></span>
+                  <div class="stepper-circle" aria-current="step">2</div>
+                  <span class="stepper-label">Resumen</span>
+                </div>
+              </nav>
+            </div>
+            <div class="card">
+              <h2 class="section-title">Contratante</h2>
+              <div class="info-row">
+                <div class="info-block">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted)">Titular</div>
+                    <strong>V-11827512 CESAR RODRIGUEZ</strong>
+                  </div>
+                </div>
+                <div class="info-block">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <path d="m22 6-10 7L2 6" />
+                  </svg>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted)">Email</div>
+                    <strong>CUCHIVANO@GMAIL.COM</strong>
+                  </div>
+                </div>
+                <div class="info-block">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted)">Teléfono</div>
+                    <strong>0412 3354353</strong>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  margin-top: 1rem;
+                  padding-top: 1rem;
+                  border-top: 1px solid var(--border);
+                  font-size: 0.85rem;
+                  color: var(--text-muted);
+                  line-height: 1.65;
+                  display: grid;
+                  gap: 0.5rem;
+                "
+              >
+                <div>
+                  <strong style="color: var(--text)">Nacimiento y estado civil:</strong> 22/03/1985 · Masculino ·
+                  Casado(a)
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h2 class="section-title">Planes para ti</h2>
+              <div class="plans-row">
+                <div class="plan-card">
+                  <h3>Plan Básico</h3>
+                  <div class="plan-price">$50.000</div>
+                  <button
+                    type="button"
+                    class="btn btn-primary plan-coverage-btn"
+                    style="width: 100%"
+                    data-coverage-toggle
+                    aria-controls="coverage-panel-basico"
+                    aria-expanded="false"
+                  >
+                    VER COBERTURAS
+                  </button>
+                  <div id="coverage-panel-basico" class="plan-coverage-panel" hidden>
+                    <ul>
+                      <li><strong>Muerte accidental</strong> — suma asegurada hasta el límite del plan.</li>
+                      <li><strong>Invalidez total permanente</strong> — por consecuencias de accidente cubierto.</li>
+                      <li><strong>Gastos médicos</strong> — atención médica derivada de accidente (según condiciones).</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="plan-card">
+                  <h3>Plan Intermedio</h3>
+                  <div class="plan-price">$150.000</div>
+                  <button
+                    type="button"
+                    class="btn btn-primary plan-coverage-btn"
+                    style="width: 100%"
+                    data-coverage-toggle
+                    aria-controls="coverage-panel-intermedio"
+                    aria-expanded="false"
+                  >
+                    VER COBERTURAS
+                  </button>
+                  <div id="coverage-panel-intermedio" class="plan-coverage-panel" hidden>
+                    <ul>
+                      <li><strong>Muerte accidental</strong> — montos superiores al Plan Básico.</li>
+                      <li><strong>Invalidez total permanente</strong> — mayor protección por accidente.</li>
+                      <li><strong>Gastos médicos</strong> — tope de reembolso ampliado frente al Plan Básico.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-actions footer-actions--end">
+              <button type="button" class="btn btn-primary" data-action="prev">Volver</button>
+              <button type="button" class="btn btn-primary" data-action="next">Guardar / Emitir ▾</button>
+            </div>
+          </section>
+
+          <!-- 4 -->
+          <section id="screen-3" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Resumen de la Cotización</h1>
+                <p>Cotización registrada correctamente</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="card card-muted">
+              <h2 class="section-title">Contratante</h2>
+              <p style="font-size: 0.9rem; color: var(--text-muted)">V-11827512 CESAR RODRIGUEZ · CUCHIVANO@GMAIL.COM</p>
+              <h2 class="section-title" style="margin-top: 1.25rem">Planes para ti</h2>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem">
+                Plan Básico y Plan Intermedio seleccionados (demo).
+              </p>
+              <div class="plans-row">
+                <div class="plan-card">
+                  <h3>Plan Básico</h3>
+                  <div class="plan-price">$50.000</div>
+                  <button
+                    type="button"
+                    class="btn btn-primary plan-coverage-btn"
+                    style="width: 100%"
+                    data-coverage-toggle
+                    aria-controls="coverage-saved-basico"
+                    aria-expanded="false"
+                  >
+                    VER COBERTURAS
+                  </button>
+                  <div id="coverage-saved-basico" class="plan-coverage-panel" hidden>
+                    <ul>
+                      <li><strong>Muerte accidental</strong> — suma asegurada hasta el límite del plan.</li>
+                      <li><strong>Invalidez total permanente</strong> — por consecuencias de accidente cubierto.</li>
+                      <li><strong>Gastos médicos</strong> — atención médica derivada de accidente (según condiciones).</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="plan-card">
+                  <h3>Plan Intermedio</h3>
+                  <div class="plan-price">$150.000</div>
+                  <button
+                    type="button"
+                    class="btn btn-primary plan-coverage-btn"
+                    style="width: 100%"
+                    data-coverage-toggle
+                    aria-controls="coverage-saved-intermedio"
+                    aria-expanded="false"
+                  >
+                    VER COBERTURAS
+                  </button>
+                  <div id="coverage-saved-intermedio" class="plan-coverage-panel" hidden>
+                    <ul>
+                      <li><strong>Muerte accidental</strong> — montos superiores al Plan Básico.</li>
+                      <li><strong>Invalidez total permanente</strong> — mayor protección por accidente.</li>
+                      <li><strong>Gastos médicos</strong> — tope de reembolso ampliado frente al Plan Básico.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-actions footer-actions--end">
+              <button type="button" class="btn btn-primary" data-action="prev">Volver</button>
+              <button type="button" class="btn btn-primary" data-action="next">Continuar a emisión</button>
+            </div>
+          </section>
+
+          <!-- 5 -->
+          <section id="screen-4" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Emisión Accidentes Personales</h1>
+                <p>Paso 1: Declaración Jurada</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="stepper-wrap">
+              <nav class="stepper" aria-label="Progreso del trámite">
+                <div class="stepper-item stepper-item--active">
+                  <div class="stepper-circle" aria-current="step">1</div>
+                  <span class="stepper-label">Declaración Jurada</span>
+                </div>
+                <div class="stepper-item stepper-item--pending">
+                  <span class="stepper-connector stepper-connector--todo" aria-hidden="true"></span>
+                  <div class="stepper-circle">2</div>
+                  <span class="stepper-label">Beneficiarios</span>
+                </div>
+                <div class="stepper-item stepper-item--pending">
+                  <span class="stepper-connector stepper-connector--todo" aria-hidden="true"></span>
+                  <div class="stepper-circle">3</div>
+                  <span class="stepper-label">Resumen</span>
+                </div>
+              </nav>
+            </div>
+            <div class="card">
+              <h2 class="section-title">Declaración Jurada</h2>
+              <h3 style="margin: 0 0 0.5rem; font-size: 0.95rem">Documentos</h3>
+              <table class="docs-table">
+                <thead>
+                  <tr><th>Estatus</th><th>Descripción</th><th>Archivo</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Entregado</td>
+                    <td>Cédula de identidad o pasaporte</td>
+                    <td><span style="font-size: 0.8rem; color: var(--bbva-blue)">OperacionesVenezuelaNov_3.pdf</span></td>
+                  </tr>
+                  <tr>
+                    <td>Entregado</td>
+                    <td>RIF de persona natural</td>
+                    <td><span style="font-size: 0.8rem; color: var(--bbva-blue)">OperacionesVenezuelaDic_1.pdf</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3 style="margin: 1.25rem 0 0.5rem; font-size: 0.95rem; color: var(--bbva-blue)">Declaraciones de conformidad</h3>
+              <ul class="check-list">
+                <li>
+                  <input type="checkbox" checked disabled />
+                  <div><strong>Declaración de fondos</strong><p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">Origen lícito de los fondos.</p></div>
+                </li>
+                <li>
+                  <input type="checkbox" checked disabled />
+                  <div><strong>Declaración de buena salud</strong><p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">Buen estado físico y mental.</p></div>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-actions">
+              <button type="button" class="btn btn-primary" data-action="prev">Volver</button>
+              <button type="button" class="btn btn-primary" data-action="next">Continuar</button>
+            </div>
+          </section>
+
+          <!-- 6 -->
+          <section id="screen-5" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Emisión Accidentes Personales</h1>
+                <p>Paso 2: Beneficiarios</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="stepper-wrap">
+              <nav class="stepper" aria-label="Progreso del trámite">
+                <div class="stepper-item stepper-item--done">
+                  <div class="stepper-circle">✓</div>
+                  <span class="stepper-label">Declaración Jurada</span>
+                </div>
+                <div class="stepper-item stepper-item--active">
+                  <span class="stepper-connector stepper-connector--done" aria-hidden="true"></span>
+                  <div class="stepper-circle" aria-current="step">2</div>
+                  <span class="stepper-label">Beneficiarios</span>
+                </div>
+                <div class="stepper-item stepper-item--pending">
+                  <span class="stepper-connector stepper-connector--todo" aria-hidden="true"></span>
+                  <div class="stepper-circle">3</div>
+                  <span class="stepper-label">Resumen</span>
+                </div>
+              </nav>
+            </div>
+            <div class="card">
+              <h2 style="margin: 0 0 1rem; font-size: 1.05rem; color: var(--bbva-blue)">Datos del Beneficiario</h2>
+              <p><span style="font-weight: 600">¿Desea cargar beneficiario?</span> <label><input type="radio" name="ben" /> No</label> <label><input type="radio" name="ben" checked /> Sí</label></p>
+              <div class="form-grid" style="margin-top: 1rem">
+                <div class="field" style="grid-column: 1 / -1">
+                  <label for="ben-doc">Cédula / R.I.F.</label>
+                  <div class="field-row-2">
+                    <select aria-label="Tipo"><option>V</option></select>
+                    <input id="ben-doc" type="text" value="3339531" />
+                  </div>
+                </div>
+                <div class="field"><label>Nombre</label><input type="text" value="Ana" /></div>
+                <div class="field"><label>Apellido</label><input type="text" value="Rodriguez" /></div>
+                <div class="field"><label>Fecha de nacimiento</label><input type="date" value="2026-03-24" /></div>
+                <div class="field"><label>Parentesco</label><select><option>PADRES</option></select></div>
+                <div class="field"><label>% Participación</label><input type="text" value="100" /></div>
+              </div>
+            </div>
+            <div class="card" style="margin-top: 1rem">
+              <h2 style="margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--bbva-blue)">Grupo familiar</h2>
+              <p style="margin: 0 0 0.75rem; font-size: 0.88rem; color: var(--text-muted)">
+                Asegurados adicionales (datos de ejemplo en esta demo).
+              </p>
+              <div class="family-table-wrap">
+                <table class="family-table">
+                  <thead>
+                    <tr>
+                      <th>Cédula / R.I.F.</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Parentesco</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>V-22334455</td>
+                      <td>María</td>
+                      <td>González</td>
+                      <td>Cónyuge</td>
+                    </tr>
+                    <tr>
+                      <td>V-33445566</td>
+                      <td>Luis</td>
+                      <td>Rodríguez</td>
+                      <td>Hijo</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="margin-top: 1rem; display: flex; justify-content: flex-end">
+                <button type="button" class="btn btn-primary" data-action="go-grupo-familiar">Agregar</button>
+              </div>
+            </div>
+            <div class="footer-actions">
+              <button type="button" class="btn btn-primary" data-action="prev">Volver</button>
+              <button type="button" class="btn btn-primary" data-action="next">Continuar</button>
+            </div>
+          </section>
+
+          <!-- 7 -->
+          <section id="screen-6" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Resumen de Emisión</h1>
+                <p>Paso 3: Revise y confirme</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="stepper-wrap">
+              <nav class="stepper" aria-label="Progreso del trámite">
+                <div class="stepper-item stepper-item--done">
+                  <div class="stepper-circle">✓</div>
+                  <span class="stepper-label">Declaración Jurada</span>
+                </div>
+                <div class="stepper-item stepper-item--done">
+                  <span class="stepper-connector stepper-connector--done" aria-hidden="true"></span>
+                  <div class="stepper-circle">✓</div>
+                  <span class="stepper-label">Beneficiarios</span>
+                </div>
+                <div class="stepper-item stepper-item--active">
+                  <span class="stepper-connector stepper-connector--done" aria-hidden="true"></span>
+                  <div class="stepper-circle" aria-current="step">3</div>
+                  <span class="stepper-label">Resumen</span>
+                </div>
+              </nav>
+            </div>
+            <div class="card" style="padding: 0; overflow: hidden">
+              <div style="background: var(--bbva-blue); color: #fff; padding: 0.75rem 1.25rem; font-weight: 700">
+                Resumen de la emisión
+              </div>
+              <div style="padding: 1.25rem 1.5rem">
+                <h2 class="section-title">Producto seleccionado</h2>
+                <div class="emission-summary-panel">
+                  <div class="emission-product-row">
+                    <span style="color: var(--text-muted)">Producto</span>
+                    <strong>Accidentes Personales</strong>
+                  </div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 1.25rem">Declaración jurada</h2>
+                <div class="emission-summary-panel">
+                  <div class="emission-decla-grid">
+                    <div>
+                      <div style="font-size: 0.85rem; color: var(--text-muted)">Declaración de fondos</div>
+                      <strong>Aceptada</strong>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.85rem; color: var(--text-muted)">Declaración de buena salud</div>
+                      <strong>Aceptada</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 1.25rem">Documentos</h2>
+                <div class="emission-summary-panel">
+                  <div class="emission-doc-row">
+                    <span class="emission-doc-label">CÉDULA DE IDENTIDAD O PASAPORTE</span>
+                    <span class="emission-doc-file">OperacionesVenezuelaNov_3.pdf</span>
+                  </div>
+                  <div class="emission-doc-row">
+                    <span class="emission-doc-label">RIF DE PERSONA NATURAL</span>
+                    <span class="emission-doc-file">OperacionesVenezuelaDic_1.pdf</span>
+                  </div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 1.25rem">Beneficiario</h2>
+                <div class="beneficiary-card">
+                  <div class="beneficiary-placeholder" role="img" aria-label="Sin foto"></div>
+                  <div>
+                    <div class="info-block" style="margin-bottom: 0.65rem">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                      </svg>
+                      <div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted)">Titular</div>
+                        <strong>V-3339531 — Ana Rodriguez</strong>
+                      </div>
+                    </div>
+                    <div class="info-block">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                      </svg>
+                      <div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted)">Parentesco</div>
+                        <strong>PADRES</strong>
+                      </div>
+                    </div>
+                    <div style="margin-top: 0.5rem; font-size: 0.9rem">
+                      <strong>100 %</strong> <span style="color: var(--text-muted)">participación</span>
+                    </div>
+                  </div>
+                  <div class="beneficiary-card-aside" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    <span
+                      style="
+                        display: flex;
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 50%;
+                        background: var(--bbva-blue);
+                        color: #fff;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.85rem;
+                        font-weight: 700;
+                      "
+                      >✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-actions">
+              <button type="button" class="btn btn-primary" data-action="prev">Volver</button>
+              <button type="button" class="btn btn-primary" data-action="open-modal-emitir">Emitir</button>
+            </div>
+          </section>
+
+          <!-- 8 -->
+          <section id="screen-7" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Cotización Accidentes Personales</h1>
+                <p>Paso 2: Grupo familiar</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="stepper-wrap">
+              <nav class="stepper" aria-label="Progreso del trámite">
+                <div class="stepper-item stepper-item--done">
+                  <div class="stepper-circle">✓</div>
+                  <span class="stepper-label">Datos del contratante</span>
+                </div>
+                <div class="stepper-item stepper-item--active">
+                  <span class="stepper-connector stepper-connector--done" aria-hidden="true"></span>
+                  <div class="stepper-circle" aria-current="step">2</div>
+                  <span class="stepper-label">Grupo familiar</span>
+                </div>
+                <div class="stepper-item stepper-item--pending">
+                  <span class="stepper-connector stepper-connector--todo" aria-hidden="true"></span>
+                  <div class="stepper-circle">3</div>
+                  <span class="stepper-label">Resumen</span>
+                </div>
+              </nav>
+            </div>
+            <div class="card">
+              <h2 style="margin: 0 0 0.5rem; font-size: 1.15rem">Grupo familiar / asegurados adicionales</h2>
+              <p style="margin: 0 0 1rem; font-size: 0.9rem; color: var(--text-muted)">
+                Agregue asegurados adicionales. El contratante ya está incluido como titular.
+              </p>
+              <button type="button" class="btn btn-primary" style="margin-bottom: 1rem">+ Agregar</button>
+              <div class="family-table-wrap">
+                <table class="family-table">
+                  <thead>
+                    <tr>
+                      <th>Cédula / R.I.F.</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Fecha de nacimiento</th>
+                      <th>Sexo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>V-22334455</td>
+                      <td>María</td>
+                      <td>González</td>
+                      <td>15/08/1990</td>
+                      <td>F</td>
+                    </tr>
+                    <tr>
+                      <td>V-33445566</td>
+                      <td>Luis</td>
+                      <td>Rodríguez</td>
+                      <td>10/02/2015</td>
+                      <td>M</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="footer-actions">
+              <button type="button" class="btn btn-primary" data-action="back-beneficiarios">Cancelar</button>
+              <button type="button" class="btn btn-primary" data-action="back-beneficiarios">Aceptar</button>
+            </div>
+          </section>
+
+          <!-- 9 Póliza emitida -->
+          <section id="screen-8" class="screen" hidden>
+            <header class="header">
+              <div class="header-text">
+                <h1>Póliza emitida</h1>
+                <p>Accidentes Personales · Constancia de emisión (demo)</p>
+              </div>
+              <div class="header-logo"><img src="assets/logo.png" width="160" height="40" alt="BBVA Seguros" /></div>
+            </header>
+            <div class="card" style="padding: 0; overflow: hidden">
+              <div style="background: var(--bbva-blue); color: #fff; padding: 0.75rem 1.25rem; font-weight: 700">
+                Su póliza ha sido emitida correctamente
+              </div>
+              <div style="padding: 1.25rem 1.5rem">
+                <h2 class="section-title">Datos de la póliza</h2>
+                <div class="emission-summary-panel">
+                  <div class="emission-product-row">
+                    <span style="color: var(--text-muted)">Número de póliza</span>
+                    <strong>APS-2026-001847</strong>
+                  </div>
+                  <div class="emission-product-row" style="margin-top: 0.65rem">
+                    <span style="color: var(--text-muted)">Fecha de emisión</span>
+                    <strong>24/03/2026</strong>
+                  </div>
+                  <div class="emission-product-row" style="margin-top: 0.65rem">
+                    <span style="color: var(--text-muted)">Vigencia desde</span>
+                    <strong>24/03/2026</strong>
+                  </div>
+                  <div class="emission-product-row" style="margin-top: 0.65rem">
+                    <span style="color: var(--text-muted)">Contratante</span>
+                    <strong>V-11827512 — César Rodríguez</strong>
+                  </div>
+                  <div class="emission-product-row" style="margin-top: 0.65rem">
+                    <span style="color: var(--text-muted)">Producto</span>
+                    <strong>Accidentes Personales</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h2 class="section-title">Planes contratados y coberturas</h2>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0 0 1rem">
+                Coberturas incluidas por plan (vista directa, sin desplegables).
+              </p>
+              <div class="plans-row plans-row--three">
+                <div class="plan-card">
+                  <h3>Plan Básico</h3>
+                  <div class="plan-price">$50.000</div>
+                  <div class="plan-coverage-panel">
+                    <ul>
+                      <li><strong>Muerte accidental</strong> — suma asegurada hasta el límite del plan.</li>
+                      <li><strong>Invalidez total permanente</strong> — por consecuencias de accidente cubierto.</li>
+                      <li><strong>Gastos médicos</strong> — atención médica derivada de accidente (según condiciones).</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="plan-card">
+                  <h3>Plan Intermedio</h3>
+                  <div class="plan-price">$150.000</div>
+                  <div class="plan-coverage-panel">
+                    <ul>
+                      <li><strong>Muerte accidental</strong> — montos superiores al Plan Básico.</li>
+                      <li><strong>Invalidez total permanente</strong> — mayor protección por accidente.</li>
+                      <li><strong>Gastos médicos</strong> — tope de reembolso ampliado frente al Plan Básico.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="plan-card">
+                  <h3>Plan Premium</h3>
+                  <div class="plan-price">$300.000</div>
+                  <div class="plan-coverage-panel">
+                    <ul>
+                      <li><strong>Muerte accidental</strong> — máxima suma asegurada del portafolio APS (demo).</li>
+                      <li><strong>Invalidez total permanente</strong> — cobertura ampliada y asistencia complementaria.</li>
+                      <li><strong>Gastos médicos</strong> — tope elevado y atención preferencial en red acordada.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-actions footer-actions--end">
+              <button type="button" class="btn btn-primary" data-action="home">Inicio</button>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="modal-emitir" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="modal-emitir-title">
+      <div class="modal modal--confirm">
+        <h2 id="modal-emitir-title">Confirmar emisión</h2>
+        <p class="modal-body">¿Está seguro de proceder con la emisión de su póliza?</p>
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; flex-wrap: wrap">
+          <button type="button" class="btn btn-ghost" data-action="close-modal-emitir">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-action="confirm-modal-emitir">Aceptar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-quote" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal">
+        <h2 id="modal-title">✓ Tu cotización fue creada exitosamente</h2>
+        <p class="modal-body">Hemos registrado tu cotización correctamente.</p>
+        <div class="quote-num"><span>Número</span><strong>7</strong></div>
+        <div style="display: flex; justify-content: flex-end">
+          <button type="button" class="btn btn-primary" data-action="close-modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
