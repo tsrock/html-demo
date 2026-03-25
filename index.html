@@ -14,7 +14,7 @@
   <body>
     <div class="app-shell">
       <aside class="sidebar" aria-label="Navegación de demostración">
-        <div class="sidebar-title">Vistas de la demo (1–9)</div>
+        <div class="sidebar-title">Vistas de la demo</div>
         <ol class="nav-steps">
           <li>
             <button type="button" data-screen="0" aria-current="page">
@@ -187,7 +187,10 @@
               </nav>
             </div>
             <div class="card">
-              <h2 style="margin: 0 0 1rem; font-size: 1.1rem">Datos del Contratante</h2>
+              <h2 style="margin: 0 0 0.5rem; font-size: 1.1rem">Datos del Contratante</h2>
+              <p style="margin: 0 0 1rem; font-size: 0.8rem; color: var(--text-muted)">
+                Ingrese el número de cédula de identidad. En caso de estar registrados sus datos se completarán de forma automática; si no, debe llenar cada uno de los campos.
+              </p>
               <div class="form-grid">
                 <div class="field" style="grid-column: 1 / -1">
                   <label for="doc">Cédula de Identidad</label>
@@ -253,12 +256,12 @@
             </header>
             <div class="stepper-wrap">
               <nav class="stepper" aria-label="Progreso del trámite">
-                <div class="stepper-item stepper-item--pending">
+                <div class="stepper-item stepper-item--done">
                   <div class="stepper-circle">1</div>
                   <span class="stepper-label">Datos de Contratante</span>
                 </div>
                 <div class="stepper-item stepper-item--active">
-                  <span class="stepper-connector stepper-connector--todo" aria-hidden="true"></span>
+                  <span class="stepper-connector stepper-connector--done" aria-hidden="true"></span>
                   <div class="stepper-circle" aria-current="step">2</div>
                   <span class="stepper-label">Resumen</span>
                 </div>
@@ -319,9 +322,19 @@
             </div>
             <div class="card">
               <h2 class="section-title">Planes para ti</h2>
+              <div class="info-only-card">
+                <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.35">
+                  A continuación se presentan las coberturas asociadas a los planes seleccionados, junto con sus sumas
+                  aseguradas. Si desea conocer el detalle, presione <strong>VER COBERTURAS</strong>. Para proceder con
+                  la emisión, seleccione su plan de su conveniencia.
+                </p>
+              </div>
               <div class="plans-row">
                 <div class="plan-card">
-                  <h3>Plan Básico</h3>
+                  <label class="plan-title-row">
+                    <input class="plan-radio-input" type="radio" name="plan-choice" value="basico" checked aria-label="Seleccionar Plan Básico" />
+                    <h3>Plan Básico</h3>
+                  </label>
                   <div class="plan-price">$50.000</div>
                   <button
                     type="button"
@@ -331,7 +344,7 @@
                     aria-controls="coverage-panel-basico"
                     aria-expanded="false"
                   >
-                    VER COBERTURAS
+                    + VER COBERTURAS
                   </button>
                   <div id="coverage-panel-basico" class="plan-coverage-panel" hidden>
                     <ul>
@@ -342,7 +355,10 @@
                   </div>
                 </div>
                 <div class="plan-card">
-                  <h3>Plan Intermedio</h3>
+                  <label class="plan-title-row">
+                    <input class="plan-radio-input" type="radio" name="plan-choice" value="intermedio" aria-label="Seleccionar Plan Intermedio" />
+                    <h3>Plan Intermedio</h3>
+                  </label>
                   <div class="plan-price">$150.000</div>
                   <button
                     type="button"
@@ -352,7 +368,7 @@
                     aria-controls="coverage-panel-intermedio"
                     aria-expanded="false"
                   >
-                    VER COBERTURAS
+                    + VER COBERTURAS
                   </button>
                   <div id="coverage-panel-intermedio" class="plan-coverage-panel" hidden>
                     <ul>
@@ -383,12 +399,17 @@
               <h2 class="section-title">Contratante</h2>
               <p style="font-size: 0.9rem; color: var(--text-muted)">V-11827512 CESAR RODRIGUEZ · CUCHIVANO@GMAIL.COM</p>
               <h2 class="section-title" style="margin-top: 1.25rem">Planes para ti</h2>
-              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem">
-                Plan Básico y Plan Intermedio seleccionados (demo).
-              </p>
+              <div class="info-only-card" style="margin-top: 0.75rem; margin-bottom: 0.75rem">
+                <p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">
+                  Su cotización ha sigo guardada con el plan que ha selccionado. Con ese plan se procederá a realizar la emisión de su póliza.
+                </p>
+              </div>
               <div class="plans-row">
                 <div class="plan-card">
-                  <h3>Plan Básico</h3>
+                  <label class="plan-title-row">
+                    <input class="plan-radio-input" type="radio" name="plan-choice-saved" value="basico" checked aria-label="Seleccionar Plan Básico" />
+                    <h3>Plan Básico</h3>
+                  </label>
                   <div class="plan-price">$50.000</div>
                   <button
                     type="button"
@@ -398,34 +419,13 @@
                     aria-controls="coverage-saved-basico"
                     aria-expanded="false"
                   >
-                    VER COBERTURAS
+                    + VER COBERTURAS
                   </button>
                   <div id="coverage-saved-basico" class="plan-coverage-panel" hidden>
                     <ul>
                       <li><strong>Muerte accidental</strong> — suma asegurada hasta el límite del plan.</li>
                       <li><strong>Invalidez total permanente</strong> — por consecuencias de accidente cubierto.</li>
                       <li><strong>Gastos médicos</strong> — atención médica derivada de accidente (según condiciones).</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="plan-card">
-                  <h3>Plan Intermedio</h3>
-                  <div class="plan-price">$150.000</div>
-                  <button
-                    type="button"
-                    class="btn btn-primary plan-coverage-btn"
-                    style="width: 100%"
-                    data-coverage-toggle
-                    aria-controls="coverage-saved-intermedio"
-                    aria-expanded="false"
-                  >
-                    VER COBERTURAS
-                  </button>
-                  <div id="coverage-saved-intermedio" class="plan-coverage-panel" hidden>
-                    <ul>
-                      <li><strong>Muerte accidental</strong> — montos superiores al Plan Básico.</li>
-                      <li><strong>Invalidez total permanente</strong> — mayor protección por accidente.</li>
-                      <li><strong>Gastos médicos</strong> — tope de reembolso ampliado frente al Plan Básico.</li>
                     </ul>
                   </div>
                 </div>
@@ -465,8 +465,12 @@
               </nav>
             </div>
             <div class="card">
-              <h2 class="section-title">Declaración Jurada</h2>
-              <h3 style="margin: 0 0 0.5rem; font-size: 0.95rem">Documentos</h3>
+              <h2 class="section-title">Documentos</h2>
+              <div class="info-only-card" style="margin-top: 0.75rem; margin-bottom: 0.75rem">
+                <p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">
+                  Cargue los documentos solicitados a continuación para la emisión de su póliza.
+                </p>
+              </div>
               <table class="docs-table">
                 <thead>
                   <tr><th>Estatus</th><th>Descripción</th><th>Archivo</th></tr>
@@ -484,15 +488,24 @@
                   </tr>
                 </tbody>
               </table>
-              <h3 style="margin: 1.25rem 0 0.5rem; font-size: 0.95rem; color: var(--bbva-blue)">Declaraciones de conformidad</h3>
+            </div>
+
+            <div class="card" style="margin-top: 1rem">
+              <h2 class="section-title">Declaración jurada</h2>
+              <div class="info-only-card" style="margin-top: 0.75rem; margin-bottom: 0.75rem">
+                <p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">
+                  A continuación se presentan las declaraciones juradas requeridas para la emisión de su póliza.
+                  Verifique la información y continúe.
+                </p>
+              </div>
               <ul class="check-list">
                 <li>
                   <input type="checkbox" checked disabled />
-                  <div><strong>Declaración de fondos</strong><p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">Origen lícito de los fondos.</p></div>
+                  <div><strong>Declaración de fondos</strong><p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">En mi carácter de TOMADOR, doy fe de que el dinero utilizado para el pago de la prima, proviene de una fuente lícita y su origen no guarda relación alguna con delitos, bienes, haberes, valores, títulos u operaciones, producto de actividades ilícitas o que provenga de los delitos de Delincuencia Organizada u otras conductas tipificadas en la legislación venezolana.</p></div>
                 </li>
                 <li>
                   <input type="checkbox" checked disabled />
-                  <div><strong>Declaración de buena salud</strong><p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">Buen estado físico y mental.</p></div>
+                  <div><strong>Declaración de buena salud</strong><p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">Declaro que me encuentro en buen estado de salud física y mental.</p></div>
                 </li>
               </ul>
             </div>
@@ -530,7 +543,10 @@
               </nav>
             </div>
             <div class="card">
-              <h2 style="margin: 0 0 1rem; font-size: 1.05rem; color: var(--bbva-blue)">Datos del Beneficiario</h2>
+              <h2 style="margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--bbva-blue)">Datos del Beneficiario</h2>
+              <p style="margin: 0 0 0.75rem; font-size: 0.8rem; color: var(--text-muted)">
+                Ingrese el número de cédula de identidad. En caso de estar registrados sus datos se completarán de forma automática; si no, debe llenar cada uno de los campos.
+              </p>
               <p><span style="font-weight: 600">¿Desea cargar beneficiario?</span> <label><input type="radio" name="ben" /> No</label> <label><input type="radio" name="ben" checked /> Sí</label></p>
               <div class="form-grid" style="margin-top: 1rem">
                 <div class="field" style="grid-column: 1 / -1">
@@ -549,9 +565,11 @@
             </div>
             <div class="card" style="margin-top: 1rem">
               <h2 style="margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--bbva-blue)">Grupo familiar</h2>
-              <p style="margin: 0 0 0.75rem; font-size: 0.88rem; color: var(--text-muted)">
-                Asegurados adicionales (datos de ejemplo en esta demo).
-              </p>
+              <div class="info-only-card" style="margin-top: 0.75rem; margin-bottom: 0.75rem">
+                <p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">
+                  Para incluir un nuevo asegurado a su grupo familiar solo presione <strong>Agregar</strong>.
+                </p>
+              </div>
               <div class="family-table-wrap">
                 <table class="family-table">
                   <thead>
@@ -825,40 +843,20 @@
             </div>
             <div class="card">
               <h2 class="section-title">Planes contratados y coberturas</h2>
-              <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0 0 1rem">
-                Coberturas incluidas por plan (vista directa, sin desplegables).
-              </p>
-              <div class="plans-row plans-row--three">
-                <div class="plan-card">
-                  <h3>Plan Básico</h3>
-                  <div class="plan-price">$50.000</div>
-                  <div class="plan-coverage-panel">
+              <div class="info-only-card" style="margin-top: 0.75rem; margin-bottom: 0.75rem">
+                <p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted)">
+                  Coberturas incluidas en plan. Ahora puede proceder a realizar el pago de su póliza. Consulte nuestros médio electrónicos
+                </p>
+              </div>
+              <div class="plans-row plans-row--single">
+                <div class="plan-card" style="padding: 1.25rem">
+                  <h3 style="font-size: 1.05rem">Plan Básico</h3>
+                  <div class="plan-price" style="font-size: 1.75rem">$50.000</div>
+                  <div class="plan-coverage-panel" style="font-size: 0.88rem; line-height: 1.5">
                     <ul>
                       <li><strong>Muerte accidental</strong> — suma asegurada hasta el límite del plan.</li>
                       <li><strong>Invalidez total permanente</strong> — por consecuencias de accidente cubierto.</li>
                       <li><strong>Gastos médicos</strong> — atención médica derivada de accidente (según condiciones).</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="plan-card">
-                  <h3>Plan Intermedio</h3>
-                  <div class="plan-price">$150.000</div>
-                  <div class="plan-coverage-panel">
-                    <ul>
-                      <li><strong>Muerte accidental</strong> — montos superiores al Plan Básico.</li>
-                      <li><strong>Invalidez total permanente</strong> — mayor protección por accidente.</li>
-                      <li><strong>Gastos médicos</strong> — tope de reembolso ampliado frente al Plan Básico.</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="plan-card">
-                  <h3>Plan Premium</h3>
-                  <div class="plan-price">$300.000</div>
-                  <div class="plan-coverage-panel">
-                    <ul>
-                      <li><strong>Muerte accidental</strong> — máxima suma asegurada del portafolio APS (demo).</li>
-                      <li><strong>Invalidez total permanente</strong> — cobertura ampliada y asistencia complementaria.</li>
-                      <li><strong>Gastos médicos</strong> — tope elevado y atención preferencial en red acordada.</li>
                     </ul>
                   </div>
                 </div>
@@ -884,10 +882,9 @@
     </div>
 
     <div id="modal-quote" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div class="modal">
+      <div class="modal modal--confirm">
         <h2 id="modal-title">✓ Tu cotización fue creada exitosamente</h2>
-        <p class="modal-body">Hemos registrado tu cotización correctamente.</p>
-        <div class="quote-num"><span>Número</span><strong>7</strong></div>
+        <p class="modal-body">Hemos registrado tu cotización Nro. 123456 correctamente.</p>
         <div style="display: flex; justify-content: flex-end">
           <button type="button" class="btn btn-primary" data-action="close-modal">Aceptar</button>
         </div>

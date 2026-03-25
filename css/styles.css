@@ -497,6 +497,11 @@ textarea:focus-visible {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.plans-row--single {
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
+}
+
 @media (max-width: 900px) {
   .plans-row--three {
     grid-template-columns: 1fr;
@@ -520,6 +525,46 @@ textarea:focus-visible {
   margin: 0 0 0.5rem;
   font-size: 1rem;
   color: var(--bbva-blue);
+}
+
+.plan-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.plan-title-row h3 {
+  margin: 0;
+}
+
+.plan-radio-input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--bbva-blue);
+  flex: 0 0 auto;
+}
+
+.info-only-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 0.85rem 1rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.info-exp-box {
+  border: 1px solid var(--bbva-blue);
+  border-radius: var(--radius-md);
+  background: #f7fbff;
+  padding: 0.85rem 1rem;
+  margin: 0.75rem 0 1rem;
+  color: var(--bbva-blue);
+  font-size: 0.88rem;
+  line-height: 1.35;
 }
 
 .plan-price {

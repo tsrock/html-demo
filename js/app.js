@@ -65,7 +65,7 @@
         const willOpen = panel.hidden
         panel.hidden = !willOpen
         btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false')
-        btn.textContent = willOpen ? 'OCULTAR COBERTURAS' : 'VER COBERTURAS'
+          btn.textContent = willOpen ? '- VER COBERTURAS' : '+ VER COBERTURAS'
       })
     })
   }
